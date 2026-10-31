@@ -25,13 +25,13 @@ export default function TerminalOutput({ history }) {
           <div key={idx} className="space-y-1.5 animate-in fade-in duration-150">
             {/* Command Echo with prompt */}
             {entry.command && (
-              <div className="flex items-center gap-2 text-xs font-mono">
-                <span className="text-cyber-emerald font-semibold select-none">
-                  learner@cyberlab-node:~$
+              <div className="flex items-center gap-2 text-xs font-mono min-w-0">
+                <span className="text-cyber-emerald font-semibold select-none shrink-0">
+                  <span className="hidden sm:inline">learner@cyberlab-node:</span>~$
                 </span>
-                <span className="text-white font-medium">{entry.command}</span>
+                <span className="text-white font-medium break-all">{entry.command}</span>
                 {entry.timestamp && (
-                  <span className="text-[10px] text-cyber-muted/50 ml-auto select-none font-mono">
+                  <span className="text-[10px] text-cyber-muted/50 ml-auto select-none font-mono shrink-0">
                     {entry.timestamp}
                   </span>
                 )}
@@ -100,7 +100,7 @@ export default function TerminalOutput({ history }) {
                   }
 
                   return (
-                    <div key={lIdx} className={`${colorClass} whitespace-pre-wrap`}>
+                    <div key={lIdx} className={`${colorClass} whitespace-pre-wrap break-words`}>
                       {line}
                     </div>
                   );

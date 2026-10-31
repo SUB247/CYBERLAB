@@ -1,6 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-bg: #090b0e;
+  --color-cyber-surface: #0f1319;
+  --color-cyber-card: #151b23;
+  --color-cyber-cardHover: #1b222d;
+  --color-cyber-card-hover: #1b222d;
+  --color-cyber-border: #212836;
+  --color-cyber-borderSubtle: #18202c;
+  --color-cyber-border-subtle: #18202c;
+  --color-cyber-muted: #8b949e;
+  --color-cyber-text: #e6edf3;
+  --color-cyber-emerald: #10b981;
+  --color-cyber-emeraldHover: #059669;
+  --color-cyber-emerald-hover: #059669;
+  --color-cyber-emeraldDim: #064e3b;
+  --color-cyber-emerald-dim: #064e3b;
+  --color-cyber-emeraldGlow: rgba(16, 185, 129, 0.15);
+  --color-cyber-emerald-glow: rgba(16, 185, 129, 0.15);
+  --color-cyber-amber: #f59e0b;
+  --color-cyber-red: #ef4444;
+  --color-cyber-cyan: #06b6d4;
+  --color-cyber-blue: #3b82f6;
+
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+}
 
 :root {
   --bg-main: #090b0e;
@@ -11,7 +35,7 @@
 }
 
 body {
-  background-color: var(--bg-main);
+  background-color: #090b0e;
   color: #e6edf3;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;

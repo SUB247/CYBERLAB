@@ -134,30 +134,30 @@ export default function SimulatedTerminal({
   return (
     <div
       onClick={focusInput}
-      className={`bg-cyber-surface border border-cyber-border rounded-xl flex flex-col shadow-xl overflow-hidden transition-all duration-300 ${
+      className={`bg-cyber-surface border border-cyber-border rounded-xl flex flex-col shadow-xl overflow-hidden transition-all duration-300 min-w-0 max-w-full ${
         isMaximized ? "fixed inset-4 z-50 bg-cyber-surface/98" : "h-full min-h-[460px]"
       }`}
     >
       {/* Terminal Top Bar */}
-      <div className="h-10 px-3.5 bg-cyber-card/80 border-b border-cyber-border flex items-center justify-between select-none">
+      <div className="h-10 px-3 sm:px-3.5 bg-cyber-card/80 border-b border-cyber-border flex items-center justify-between select-none min-w-0">
         {/* Left window badges */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 mr-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="flex items-center gap-1.5 mr-1 sm:mr-2 shrink-0">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
           </div>
-          <span className="text-xs font-mono font-medium text-cyber-text flex items-center gap-1.5">
-            <TerminalIcon className="w-3.5 h-3.5 text-cyber-emerald" />
-            simulated-bash [node-1]
+          <span className="text-xs font-mono font-medium text-cyber-text flex items-center gap-1.5 truncate">
+            <TerminalIcon className="w-3.5 h-3.5 text-cyber-emerald shrink-0" />
+            <span className="truncate">simulated-bash [node-1]</span>
           </span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyber-bg border border-cyber-border text-cyber-emerald font-mono hidden sm:inline-block">
+          <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyber-bg border border-cyber-border text-cyber-emerald font-mono hidden md:inline-block shrink-0">
             {mode === "mission" ? `Mission: ${missionId}` : "Practice Sandbox"}
           </span>
         </div>
 
         {/* Right action controls */}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 shrink-0">
           <button
             type="button"
             onClick={(e) => {
@@ -217,17 +217,17 @@ export default function SimulatedTerminal({
       </div>
 
       {/* Terminal Input Bar */}
-      <div className="p-3 bg-cyber-card/70 border-t border-cyber-border">
+      <div className="p-2.5 sm:p-3 bg-cyber-card/70 border-t border-cyber-border min-w-0">
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleRun();
           }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 min-w-0"
         >
           {/* Prompt prefix */}
           <span className="text-xs font-mono font-bold text-cyber-emerald select-none shrink-0">
-            learner@cyberlab-node:~$
+            <span className="hidden sm:inline">learner@cyberlab-node:</span>~$
           </span>
 
           {/* Accessible input field */}
@@ -238,7 +238,7 @@ export default function SimulatedTerminal({
             onChange={(e) => setInputVal(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Type nmap command (e.g. nmap 192.0.2.45)..."
-            className="flex-1 bg-cyber-bg border border-cyber-border rounded-lg px-3 py-1.5 text-xs font-mono text-cyber-text placeholder:text-cyber-muted/40 focus:border-cyber-emerald focus:outline-none transition-colors"
+            className="flex-1 min-w-0 bg-cyber-bg border border-cyber-border rounded-lg px-2.5 sm:px-3 py-1.5 text-xs font-mono text-cyber-text placeholder:text-cyber-muted/40 focus:border-cyber-emerald focus:outline-none transition-colors"
             autoComplete="off"
             spellCheck="false"
             disabled={isExecuting}
@@ -249,7 +249,7 @@ export default function SimulatedTerminal({
           <button
             type="submit"
             disabled={!inputVal.trim() || isExecuting}
-            className="px-3 py-1.5 rounded-lg bg-cyber-emerald hover:bg-cyber-emeraldHover disabled:opacity-40 disabled:cursor-not-allowed text-black font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all"
+            className="px-3 py-1.5 rounded-lg bg-cyber-emerald hover:bg-cyber-emeraldHover disabled:opacity-40 disabled:cursor-not-allowed text-black font-semibold text-xs flex items-center gap-1.5 shadow-sm transition-all shrink-0"
             title="Execute Command (Enter)"
           >
             <Play className="w-3 h-3 fill-current" />

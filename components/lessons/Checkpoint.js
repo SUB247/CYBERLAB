@@ -72,23 +72,23 @@ export default function Checkpoint({
     (!checkpoint.secondaryQuestion || secondaryChoice?.isCorrect);
 
   return (
-    <div className="p-5 rounded-xl bg-cyber-card border border-cyber-border space-y-5">
+    <div className="p-5 rounded-xl bg-cyber-card border border-cyber-border space-y-5 min-w-0 max-w-full">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-cyber-border/60 pb-3">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="p-2 rounded-lg bg-cyber-emerald/10 text-cyber-emerald border border-cyber-emerald/20 shrink-0">
             <HelpCircle className="w-4 h-4" />
           </div>
-          <div>
-            <h3 className="text-sm font-semibold text-cyber-text">Knowledge Checkpoint</h3>
-            <p className="text-[11px] text-cyber-muted">Verify your conceptual understanding before completing</p>
+          <div className="min-w-0">
+            <h3 className="text-sm font-semibold text-cyber-text truncate">Knowledge Checkpoint</h3>
+            <p className="text-[11px] text-cyber-muted truncate">Verify your conceptual understanding before completing</p>
           </div>
         </div>
 
         {isCheckpointPassed && (
-          <span className="flex items-center gap-1.5 text-xs font-semibold text-cyber-emerald bg-emerald-950/40 border border-emerald-500/30 px-2.5 py-1 rounded-full font-mono">
+          <span className="flex items-center gap-1.5 text-xs font-semibold text-cyber-emerald bg-emerald-950/40 border border-emerald-500/30 px-2.5 py-1 rounded-full font-mono shrink-0">
             <CheckCircle2 className="w-3.5 h-3.5" />
-            Passed
+            <span>Passed</span>
           </span>
         )}
       </div>
@@ -107,7 +107,7 @@ export default function Checkpoint({
       )}
 
       {/* Question 1 */}
-      <div className="space-y-3">
+      <div className="space-y-3 min-w-0">
         <p className="text-xs font-medium text-cyber-text leading-relaxed">
           <strong className="text-cyber-emerald font-mono mr-1">Q1:</strong>
           {checkpoint.question}
@@ -140,7 +140,7 @@ export default function Checkpoint({
                   !isCommandPassed ? "opacity-50 cursor-not-allowed" : ""
                 }`}
               >
-                <div className="flex items-start gap-2.5">
+                <div className="flex items-start gap-2.5 min-w-0">
                   <div
                     className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${
                       isSelected
@@ -150,11 +150,11 @@ export default function Checkpoint({
                   >
                     {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
                   </div>
-                  <div className="space-y-1">
-                    <p className="leading-relaxed">{opt.text}</p>
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <p className="leading-relaxed break-words">{opt.text}</p>
                     {submitted && (isSelected || opt.isCorrect) && (
                       <p
-                        className={`text-[11px] font-mono pt-1 ${
+                        className={`text-[11px] font-mono pt-1 break-words ${
                           opt.isCorrect ? "text-emerald-300" : "text-red-300"
                         }`}
                       >
@@ -171,7 +171,7 @@ export default function Checkpoint({
 
       {/* Question 2 (if present) */}
       {checkpoint.secondaryQuestion && (
-        <div className="space-y-3 pt-3 border-t border-cyber-border/40">
+        <div className="space-y-3 pt-3 border-t border-cyber-border/40 min-w-0">
           <p className="text-xs font-medium text-cyber-text leading-relaxed">
             <strong className="text-cyber-emerald font-mono mr-1">Q2:</strong>
             {checkpoint.secondaryQuestion}
@@ -204,7 +204,7 @@ export default function Checkpoint({
                     !isCommandPassed ? "opacity-50 cursor-not-allowed" : ""
                   }`}
                 >
-                  <div className="flex items-start gap-2.5">
+                  <div className="flex items-start gap-2.5 min-w-0">
                     <div
                       className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 mt-0.5 ${
                         isSelected
@@ -214,11 +214,11 @@ export default function Checkpoint({
                     >
                       {isSelected && <div className="w-1.5 h-1.5 rounded-full bg-black" />}
                     </div>
-                    <div className="space-y-1">
-                      <p className="leading-relaxed">{opt.text}</p>
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <p className="leading-relaxed break-words">{opt.text}</p>
                       {submitted && (isSelected || opt.isCorrect) && (
                         <p
-                          className={`text-[11px] font-mono pt-1 ${
+                          className={`text-[11px] font-mono pt-1 break-words ${
                             opt.isCorrect ? "text-emerald-300" : "text-red-300"
                           }`}
                         >

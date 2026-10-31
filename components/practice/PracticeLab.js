@@ -59,18 +59,18 @@ export default function PracticeLab({
   };
 
   return (
-    <div className="h-full flex flex-col p-4 lg:p-6 space-y-6 overflow-y-auto">
+    <div className="h-full flex flex-col p-4 lg:p-6 space-y-6 overflow-y-auto min-w-0 max-w-full">
       {/* Top Banner */}
-      <div className="p-5 rounded-xl bg-cyber-card border border-cyber-border flex items-center justify-between flex-wrap gap-4">
-        <div className="space-y-1">
+      <div className="p-5 rounded-xl bg-cyber-card border border-cyber-border flex items-center justify-between flex-wrap gap-4 min-w-0">
+        <div className="space-y-1 min-w-0">
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-0.5 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono font-semibold">
               UNRESTRICTED LAB SANDBOX
             </span>
             <span className="text-xs text-cyber-muted font-mono">RFC 5737 Boundary</span>
           </div>
-          <h1 className="text-xl font-bold text-cyber-text">Practice Lab Sandbox</h1>
-          <p className="text-xs text-cyber-muted leading-relaxed max-w-2xl">
+          <h1 className="text-xl font-bold text-cyber-text break-words">Practice Lab Sandbox</h1>
+          <p className="text-xs text-cyber-muted leading-relaxed max-w-2xl break-words">
             Experiment with supported educational commands against the simulated lab network.
             Test different scan options and verify deterministic outputs in a safe sandbox.
           </p>
@@ -78,7 +78,7 @@ export default function PracticeLab({
 
         <button
           onClick={onOpenGlossary}
-          className="px-3.5 py-2 rounded-lg bg-cyber-surface hover:bg-cyber-card border border-cyber-border text-xs font-medium text-cyber-text transition-colors flex items-center gap-1.5"
+          className="px-3.5 py-2 rounded-lg bg-cyber-surface hover:bg-cyber-card border border-cyber-border text-xs font-medium text-cyber-text transition-colors flex items-center gap-1.5 shrink-0"
         >
           <BookOpen className="w-3.5 h-3.5 text-cyber-emerald" />
           <span>Open Glossary</span>
@@ -86,9 +86,9 @@ export default function PracticeLab({
       </div>
 
       {/* Main Grid: Cheatsheet on left, Terminal on right */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-[500px]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 min-h-[500px] min-w-0">
         {/* Left: Command reference cards */}
-        <div className="lg:col-span-5 space-y-3">
+        <div className="lg:col-span-5 space-y-3 min-w-0">
           <div className="flex items-center justify-between pb-1">
             <h2 className="text-xs font-bold text-cyber-text uppercase tracking-wider">
               Quick Reference Commands
@@ -100,7 +100,7 @@ export default function PracticeLab({
             {practiceScenarios.map((sc, idx) => (
               <div
                 key={idx}
-                className="p-3 rounded-lg bg-cyber-surface border border-cyber-border hover:border-cyber-borderSubtle transition-all space-y-2"
+                className="p-3 rounded-lg bg-cyber-surface border border-cyber-border hover:border-cyber-borderSubtle transition-all space-y-2 min-w-0"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-cyber-text">{sc.title}</span>
@@ -116,10 +116,10 @@ export default function PracticeLab({
                     )}
                   </button>
                 </div>
-                <div className="p-1.5 rounded bg-cyber-bg border border-cyber-border font-mono text-xs text-cyber-emerald">
+                <div className="p-1.5 rounded bg-cyber-bg border border-cyber-border font-mono text-xs text-cyber-emerald break-all">
                   {sc.command}
                 </div>
-                <p className="text-[11px] text-cyber-muted leading-relaxed">
+                <p className="text-[11px] text-cyber-muted leading-relaxed break-words">
                   {sc.description}
                 </p>
               </div>
@@ -136,7 +136,7 @@ export default function PracticeLab({
         </div>
 
         {/* Right: Simulated Terminal */}
-        <div className="lg:col-span-7 flex flex-col">
+        <div className="lg:col-span-7 flex flex-col min-w-0 max-w-full">
           <SimulatedTerminal
             missionId={null}
             mode="practice"

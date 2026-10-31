@@ -74,14 +74,14 @@ export default function LessonViewer({
   return (
     <div className="h-full flex flex-col">
       {/* Workspace Sub-header */}
-      <div className="h-12 border-b border-cyber-border px-4 flex items-center justify-between bg-cyber-card/30">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-semibold text-cyber-text flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse" />
-            {mission.title}
+      <div className="min-h-12 border-b border-cyber-border px-3 sm:px-4 py-2 flex flex-wrap items-center justify-between gap-2 bg-cyber-card/30 min-w-0">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="text-xs font-semibold text-cyber-text flex items-center gap-2 truncate">
+            <span className="w-2 h-2 rounded-full bg-cyber-emerald animate-pulse shrink-0" />
+            <span className="truncate">{mission.title}</span>
           </span>
           {isCheckpointPassed && (
-            <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyber-emerald/15 text-cyber-emerald border border-cyber-emerald/30 font-mono font-medium flex items-center gap-1">
+            <span className="text-[10px] px-2 py-0.5 rounded-full bg-cyber-emerald/15 text-cyber-emerald border border-cyber-emerald/30 font-mono font-medium flex items-center gap-1 shrink-0">
               <CheckCircle2 className="w-3 h-3" />
               Completed
             </span>
@@ -89,10 +89,10 @@ export default function LessonViewer({
         </div>
 
         {/* Tab Controls for Lesson Content */}
-        <div className="flex items-center gap-1 bg-cyber-surface p-1 rounded-lg border border-cyber-border text-xs">
+        <div className="flex items-center gap-1 bg-cyber-surface p-1 rounded-lg border border-cyber-border text-xs overflow-x-auto max-w-full shrink-0">
           <button
             onClick={() => setActiveTab("briefing")}
-            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 ${
+            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 shrink-0 ${
               activeTab === "briefing"
                 ? "bg-cyber-card text-cyber-emerald font-semibold shadow-sm"
                 : "text-cyber-muted hover:text-cyber-text"
@@ -104,7 +104,7 @@ export default function LessonViewer({
 
           <button
             onClick={() => setActiveTab("breakdown")}
-            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 ${
+            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 shrink-0 ${
               activeTab === "breakdown"
                 ? "bg-cyber-card text-cyber-emerald font-semibold shadow-sm"
                 : "text-cyber-muted hover:text-cyber-text"
@@ -116,7 +116,7 @@ export default function LessonViewer({
 
           <button
             onClick={() => setActiveTab("checkpoint")}
-            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 ${
+            className={`px-3 py-1 rounded-md transition-colors flex items-center gap-1.5 shrink-0 ${
               activeTab === "checkpoint"
                 ? "bg-cyber-card text-cyber-emerald font-semibold shadow-sm"
                 : "text-cyber-muted hover:text-cyber-text"
@@ -132,11 +132,11 @@ export default function LessonViewer({
       </div>
 
       {/* Main Two-Column Workspace Layout */}
-      <div className="flex-1 p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 overflow-y-auto">
+      <div className="flex-1 p-4 lg:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 overflow-y-auto min-w-0 max-w-full">
         {/* Left Column: Lesson Instructions, Hints, Checkpoints */}
-        <div className="lg:col-span-6 space-y-6">
+        <div className="lg:col-span-6 space-y-6 min-w-0 max-w-full">
           {activeTab === "briefing" && (
-            <div className="space-y-6">
+            <div className="space-y-6 min-w-0">
               <MissionBriefing mission={mission} />
               <HintPanel
                 hints={mission.hints}
@@ -149,7 +149,7 @@ export default function LessonViewer({
           )}
 
           {activeTab === "breakdown" && (
-            <div className="space-y-6">
+            <div className="space-y-6 min-w-0">
               {lastCommandResult?.commandBreakdown ? (
                 <CommandExplanation
                   breakdown={lastCommandResult.commandBreakdown}
@@ -162,14 +162,14 @@ export default function LessonViewer({
                     No Command Executed Yet
                   </p>
                   <p className="text-xs text-cyber-muted max-w-sm mx-auto leading-relaxed">
-                    Run the target scan <code className="text-cyber-emerald font-mono bg-cyber-surface px-1.5 py-0.5 rounded">{mission.challenge.requiredCommand}</code> in the terminal to inspect the detailed breakdown of each token.
+                    Run the target scan <code className="text-cyber-emerald font-mono bg-cyber-surface px-1.5 py-0.5 rounded break-all">{mission.challenge.requiredCommand}</code> in the terminal to inspect the detailed breakdown of each token.
                   </p>
                 </div>
               )}
 
               {/* Seamless Checkpoint prompt below breakdown */}
-              <div className="p-4 rounded-xl bg-cyber-surface border border-cyber-border flex items-center justify-between">
-                <div>
+              <div className="p-4 rounded-xl bg-cyber-surface border border-cyber-border flex items-center justify-between flex-wrap gap-2">
+                <div className="min-w-0">
                   <h4 className="text-xs font-semibold text-cyber-text">Ready to test your knowledge?</h4>
                   <p className="text-[11px] text-cyber-muted mt-0.5">
                     Proceed to the mission checkpoint to complete the module.
@@ -177,7 +177,7 @@ export default function LessonViewer({
                 </div>
                 <button
                   onClick={() => setActiveTab("checkpoint")}
-                  className="px-3 py-1.5 rounded-lg bg-cyber-emerald hover:bg-cyber-emeraldHover text-black font-semibold text-xs transition-colors flex items-center gap-1"
+                  className="px-3 py-1.5 rounded-lg bg-cyber-emerald hover:bg-cyber-emeraldHover text-black font-semibold text-xs transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span>Go to Checkpoint</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -199,7 +199,7 @@ export default function LessonViewer({
         </div>
 
         {/* Right Column: Simulated Terminal & Live Feedback */}
-        <div className="lg:col-span-6 flex flex-col space-y-4">
+        <div className="lg:col-span-6 flex flex-col space-y-4 min-w-0 max-w-full">
           <SimulatedTerminal
             missionId={missionId}
             mode="mission"
